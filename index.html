@@ -24,7 +24,21 @@
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    
+    /* PERBAIKAN: Reset scroll behavior */
+    html {
+      scroll-behavior: auto !important;
+    }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    
     body {
       font-family: 'Nunito', sans-serif;
       background: var(--bg);
@@ -1654,6 +1668,30 @@
 </footer>
 
 <script>
+/* ==================== PERBAIKAN: RESET SCROLL KE ATAS ==================== */
+
+// 1. Matikan fitur scroll restoration browser
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
+// 2. Reset scroll ke posisi awal saat halaman dimuat
+window.addEventListener('load', function() {
+  // Hapus hash dari URL jika ada (agar tidak ada anchor link)
+  if (window.location.hash) {
+    history.pushState(null, null, window.location.pathname + window.location.search);
+  }
+  // Scroll ke posisi paling atas
+  window.scrollTo(0, 0);
+});
+
+// 3. Alternatif: paksa scroll ke atas setelah 1ms (jika ada race condition)
+setTimeout(function() {
+  window.scrollTo(0, 0);
+}, 1);
+
+/* ==================== AKHIR PERBAIKAN ==================== */
+
 /* ════════ TYPING LAB ════════ */
 const LEVELS = [
   // 0 Beginner – home row only
