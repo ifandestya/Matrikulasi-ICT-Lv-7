@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICT E-Module – Level 7 | Al-Abidin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Fredoka+One&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --sky:    #4DAAFF;
+      --navy:   #1B2D6B;
+      --sun:    #FFD234;
+      --mint:   #3DD9A3;
+      --coral:  #FF6B6B;
+      --lavender:#A78BFA;
+      --bg:     #F0F6FF;
+      --white:  #FFFFFF;
+      --text:   #2D3748;
+      --muted:  #6B7A99;
+      --radius: 20px;
+      --shadow: 0 6px 24px rgba(27,45,107,.10);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, #2563EB 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 60px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='rgba(255,255,255,.06)' stroke-width='2'/%3E%3C/svg%3E") repeat;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--sun);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: .85rem;
+      padding: 6px 18px;
+      border-radius: 999px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    header h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      letter-spacing: .02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: .85;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .header-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    }
+    .chip {
+      background: rgba(255,255,255,.18);
+      border: 1.5px solid rgba(255,255,255,.35);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: .88rem;
+      font-weight: 700;
+    }
+    .hero-emoji { font-size: 3rem; margin-bottom: 12px; display: block; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 4px;
+      padding: 10px 20px;
+    }
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .85rem;
+      padding: 7px 14px;
+      border-radius: 10px;
+      transition: background .2s, color .2s;
+    }
+    nav a:hover { background: var(--sky); color: #fff; }
+
+    /* ── MAIN ── */
+    main { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* ── CHAPTER ── */
+    .chapter { margin-bottom: 64px; }
+    .chapter-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 28px;
+    }
+    .chapter-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+    .c1 { background: #DBEAFE; }
+    .c2 { background: #D1FAE5; }
+    .c3 { background: #FEF3C7; }
+    .c4 { background: #EDE9FE; }
+    .c5 { background: #FFE4E6; }
+    .chapter-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      color: var(--navy);
+    }
+    .chapter-sub { font-size: .92rem; color: var(--muted); font-weight: 600; }
+
+    /* ── SECTION CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid transparent;
+    }
+    .card.blue   { border-color: var(--sky); }
+    .card.green  { border-color: var(--mint); }
+    .card.yellow { border-color: var(--sun); }
+    .card.purple { border-color: var(--lavender); }
+    .card.red    { border-color: var(--coral); }
+
+    .card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card h3 .icon { font-size: 1.4rem; }
+    .card p { margin-bottom: 10px; font-size: .97rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ── ILLUSTRATION BOX ── */
+    .illus {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 18px 0;
+    }
+    .illus svg { display: block; width: 100%; }
+
+    /* ── TWO-COLUMN GRID ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 18px 0;
+    }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ── LIST ── */
+    .tip-list { list-style: none; padding: 0; margin: 14px 0; }
+    .tip-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-bottom: 12px; font-size: .96rem;
+    }
+    .tip-list li .bullet {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; flex-shrink: 0; margin-top: 1px;
+      font-weight: 900;
+    }
+    .bullet-blue   { background: #DBEAFE; color: #1D4ED8; }
+    .bullet-green  { background: #D1FAE5; color: #047857; }
+    .bullet-yellow { background: #FEF3C7; color: #92400E; }
+    .bullet-purple { background: #EDE9FE; color: #5B21B6; }
+    .bullet-red    { background: #FFE4E6; color: #9F1239; }
+
+    /* ── SHORTCUT TABLE ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th {
+      background: var(--navy); color: #fff;
+      padding: 10px 14px; text-align: left; font-weight: 700;
+    }
+    td { padding: 9px 14px; border-bottom: 1px solid #E8EEF8; }
+    tr:nth-child(even) td { background: #F7FAFF; }
+    tr:last-child td { border-bottom: none; }
+
+    /* ── DID YOU KNOW ── */
+    .did-you-know {
+      background: linear-gradient(120deg, #FFF9DB, #FFF3C4);
+      border: 2px dashed #FFD234;
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin: 20px 0;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .did-you-know .dyk-icon { font-size: 2rem; flex-shrink: 0; }
+    .did-you-know h4 { font-family: 'Fredoka One', cursive; color: var(--navy); margin-bottom: 4px; }
+    .did-you-know p { font-size: .93rem; }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0;
+    }
+    @media (max-width: 540px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-box {
+      border-radius: 14px; padding: 20px;
+    }
+    .compare-box h4 { font-family: 'Fredoka One', cursive; font-size: 1.1rem; margin-bottom: 12px; }
+    .compare-box ul { padding-left: 18px; font-size: .9rem; }
+    .compare-box ul li { margin-bottom: 6px; }
+    .pros { background: #D1FAE5; color: #064E3B; }
+    .cons { background: #FFE4E6; color: #7F1D1D; }
+
+    /* ── STEP LIST ── */
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 14px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 14px; font-size: .96rem;
+    }
+    .steps li::before {
+      content: counter(step);
+      min-width: 32px; height: 32px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: .9rem; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* ── BROWSER LOGOS ── */
+    .browser-row {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      justify-content: center; margin: 22px 0;
+    }
+    .browser-item {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-weight: 700; font-size: .88rem; color: var(--navy);
+    }
+    .browser-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; box-shadow: 0 4px 14px rgba(0,0,0,.10);
+    }
+
+    /* ── KEYBOARD DIAGRAM ── */
+    .kbd-row {
+      display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0;
+    }
+    .key {
+      background: #E8EEF8; border: 2px solid #CBD5E1;
+      border-bottom: 4px solid #94A3B8;
+      border-radius: 6px; padding: 6px 10px;
+      font-size: .82rem; font-weight: 700; color: var(--navy);
+      min-width: 36px; text-align: center;
+    }
+    .key.home-key { background: #DBEAFE; border-color: var(--sky); border-bottom-color: #2563EB; }
+
+    /* ── QUIZ BOX ── */
+    .quiz-box {
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .quiz-box h3 { font-family: 'Fredoka One', cursive; font-size: 1.6rem; margin-bottom: 8px; }
+    .quiz-box p { opacity: .9; margin-bottom: 20px; font-size: .98rem; }
+    .quiz-btn {
+      display: inline-block;
+      background: var(--sun); color: var(--navy);
+      font-weight: 900; font-size: 1rem;
+      padding: 12px 32px; border-radius: 999px;
+      text-decoration: none; transition: transform .15s;
+    }
+    .quiz-btn:hover { transform: scale(1.04); }
+
+    .c6 { background: #FDDDE6; }
+
+    /* ── FINGER COLOR MAP ── */
+    .finger-map {
+      display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; justify-content: center;
+    }
+    .finger-badge {
+      border-radius: 12px; padding: 8px 16px; font-weight: 800; font-size: .88rem; text-align: center; min-width: 100px;
+    }
+    .f-pink   { background:#FFD6E7; color:#9D174D; }
+    .f-red    { background:#FFE4E6; color:#9F1239; }
+    .f-orange { background:#FEF3C7; color:#92400E; }
+    .f-yellow { background:#FFFBEB; color:#78350F; border:2px solid #FFD234; }
+    .f-green  { background:#D1FAE5; color:#065F46; }
+    .f-teal   { background:#CCFBF1; color:#134E4A; }
+    .f-blue   { background:#DBEAFE; color:#1E40AF; }
+    .f-indigo { background:#EDE9FE; color:#4C1D95; }
+
+    /* ── KEYBOARD INTERACTIVE ── */
+    .kb-wrap { margin: 20px 0; user-select: none; }
+    .kb-row-keys { display: flex; gap: 5px; margin: 4px 0; flex-wrap: nowrap; }
+    .k {
+      background: #E8EEF8; border: 2px solid #CBD5E1;
+      border-bottom: 4px solid #94A3B8; border-radius: 7px;
+      padding: 8px 6px; font-size: .78rem; font-weight: 800;
+      color: var(--navy); min-width: 40px; text-align: center;
+      transition: background .12s, transform .08s; cursor: default; line-height: 1.1;
+      flex-shrink: 0;
+    }
+    .k.pinky-l  { background:#FFD6E7; border-color:#F9A8D4; border-bottom-color:#E879A0; }
+    .k.ring-l   { background:#FFE4E6; border-color:#FCA5A5; border-bottom-color:#F87171; }
+    .k.mid-l    { background:#FEF3C7; border-color:#FDE68A; border-bottom-color:#F59E0B; }
+    .k.idx-l    { background:#D1FAE5; border-color:#6EE7B7; border-bottom-color:#10B981; }
+    .k.idx-l2   { background:#A7F3D0; border-color:#34D399; border-bottom-color:#059669; }
+    .k.thumb    { background:#DBEAFE; border-color:#93C5FD; border-bottom-color:#3B82F6; }
+    .k.idx-r    { background:#CCFBF1; border-color:#5EEAD4; border-bottom-color:#14B8A6; }
+    .k.idx-r2   { background:#C7D2FE; border-color:#818CF8; border-bottom-color:#4F46E5; }
+    .k.mid-r    { background:#FEF3C7; border-color:#FDE68A; border-bottom-color:#F59E0B; }
+    .k.ring-r   { background:#FFE4E6; border-color:#FCA5A5; border-bottom-color:#F87171; }
+    .k.pinky-r  { background:#FFD6E7; border-color:#F9A8D4; border-bottom-color:#E879A0; }
+    .k.home-mark{ box-shadow: 0 0 0 3px #FFD234; }
+    .k.lit { background: #FFD234 !important; border-color: #F59E0B !important; border-bottom-color: #D97706 !important; transform: translateY(2px); }
+    .k.correct-key { background: #6EE7B7 !important; border-color: #10B981 !important; border-bottom-color: #047857 !important; transform: translateY(2px); }
+    .k.wrong-key   { background: #FCA5A5 !important; border-color: #F87171 !important; border-bottom-color: #DC2626 !important; transform: translateY(2px); }
+    .k.wide-1 { min-width: 55px; }
+    .k.wide-2 { min-width: 70px; }
+    .k.wide-3 { min-width: 85px; }
+    .k.wide-4 { min-width: 100px; }
+    .k.space-bar { min-width: 260px; }
+
+    /* ── TYPING LAB ── */
+    .lab-box {
+      background: var(--navy); border-radius: 16px; padding: 24px;
+      color: white; margin: 20px 0;
+    }
+    .lab-prompt {
+      font-size: 1.15rem; font-weight: 700; letter-spacing: .04em;
+      background: rgba(255,255,255,.1); border-radius: 10px; padding: 14px 18px;
+      margin-bottom: 14px; line-height: 1.9; min-height: 60px;
+      font-family: 'Courier New', monospace;
+    }
+    .lab-prompt .done-char  { color: #6EE7B7; }
+    .lab-prompt .cur-char   { background: #FFD234; color: #1B2D6B; border-radius: 3px; padding: 0 1px; }
+    .lab-prompt .wait-char  { color: rgba(255,255,255,.55); }
+    .lab-prompt .wrong-char { background: #FCA5A5; color: #7F1D1D; border-radius: 3px; padding: 0 1px; }
+    .lab-input {
+      width: 100%; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.25);
+      border-radius: 10px; padding: 12px 16px; font-size: 1rem; color: white;
+      outline: none; font-family: 'Nunito', sans-serif;
+    }
+    .lab-input:focus { border-color: #FFD234; }
+    .lab-stats {
+      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px;
+    }
+    .lab-stat {
+      background: rgba(255,255,255,.12); border-radius: 10px; padding: 10px 16px;
+      text-align: center; flex: 1; min-width: 80px;
+    }
+    .lab-stat .val { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: #FFD234; }
+    .lab-stat .lbl { font-size: .78rem; opacity: .75; margin-top: 2px; }
+    .lab-btn {
+      background: var(--sun); color: var(--navy); border: none; border-radius: 10px;
+      padding: 10px 22px; font-size: .95rem; font-weight: 900; cursor: pointer;
+      transition: transform .15s; font-family: 'Nunito', sans-serif; margin-top: 12px;
+    }
+    .lab-btn:hover { transform: scale(1.04); }
+    .lab-btn.secondary { background: rgba(255,255,255,.2); color: white; margin-left: 8px; }
+    .level-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .level-pill {
+      padding: 6px 16px; border-radius: 999px; font-weight: 800; font-size: .82rem;
+      cursor: pointer; border: 2px solid transparent; transition: all .15s;
+    }
+    .level-pill.active { border-color: #FFD234; background: rgba(255,212,52,.18); }
+
+    /* ── FOLDER LAB ── */
+    .folder-lab {
+      background: #F0F6FF; border: 2px solid #CBD5E1; border-radius: 16px;
+      padding: 22px; margin: 18px 0;
+    }
+    .folder-lab h4 { font-family: 'Fredoka One', cursive; color: var(--navy); font-size: 1.1rem; margin-bottom: 14px; }
+    .sim-area {
+      background: white; border-radius: 10px; padding: 16px;
+      min-height: 140px; border: 2px dashed #CBD5E1; margin: 10px 0;
+      font-size: .9rem;
+    }
+    .sim-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #F0F6FF; border: 1.5px solid #CBD5E1; border-radius: 8px;
+      padding: 6px 12px; margin: 4px; font-size: .85rem; font-weight: 700;
+      color: var(--navy); cursor: pointer; transition: background .15s;
+    }
+    .sim-item:hover { background: #DBEAFE; }
+    .sim-item.selected { background: #DBEAFE; border-color: var(--sky); }
+    .sim-item.zip-item { background: #D1FAE5; border-color: var(--mint); }
+    .sim-step-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; align-items: center; }
+    .sim-btn {
+      background: var(--navy); color: white; border: none; border-radius: 8px;
+      padding: 8px 16px; font-size: .85rem; font-weight: 800; cursor: pointer;
+      font-family: 'Nunito', sans-serif; transition: background .15s;
+    }
+    .sim-btn:hover { background: #2563EB; }
+    .sim-btn:disabled { background: #CBD5E1; cursor: not-allowed; }
+    .sim-log {
+      background: #1E293B; color: #6EE7B7; border-radius: 8px; padding: 12px 14px;
+      font-size: .82rem; font-family: monospace; min-height: 48px; margin-top: 8px;
+      white-space: pre-wrap; line-height: 1.6;
+    }
+    .sim-input {
+      border: 2px solid #CBD5E1; border-radius: 8px; padding: 8px 12px;
+      font-size: .88rem; font-family: 'Nunito', sans-serif; color: var(--navy);
+      outline: none; width: 160px;
+    }
+    .sim-input:focus { border-color: var(--sky); }
+
+    /* ── QUIZ SECTION ── */
+    .quiz-section-box {
+      background: linear-gradient(135deg, #1B2D6B 0%, #764BA2 100%);
+      border-radius: var(--radius); padding: 36px 28px; text-align: center; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .quiz-section-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='18' fill='none' stroke='rgba(255,255,255,.07)' stroke-width='2'/%3E%3C/svg%3E") repeat;
+    }
+    .quiz-section-box > * { position: relative; }
+    .quiz-section-box h2 { font-family: 'Fredoka One', cursive; font-size: 2rem; color: white; margin-bottom: 10px; }
+    .quiz-section-box p  { color: rgba(255,255,255,.85); font-size: 1rem; max-width: 520px; margin: 0 auto 24px; }
+    .quizizz-btn {
+      display: inline-block;
+      background: #FFD234; color: var(--navy); font-weight: 900; font-size: 1.15rem;
+      padding: 16px 40px; border-radius: 999px; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(255,210,52,.4); transition: transform .15s, box-shadow .15s;
+    }
+    .quizizz-btn:hover { transform: scale(1.06); box-shadow: 0 8px 32px rgba(255,210,52,.55); }
+    .quiz-badge-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
+    .quiz-badge {
+      background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3);
+      color: white; border-radius: 999px; padding: 7px 18px; font-size: .88rem; font-weight: 700;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--muted);
+      font-size: .88rem;
+      border-top: 1px solid #E2E8F0;
+    }
+    footer span { color: var(--coral); }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-radius: 14px; padding: 18px 22px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .callout.info  { background: #DBEAFE; }
+    .callout.warn  { background: #FEF3C7; }
+    .callout.danger{ background: #FFE4E6; }
+    .callout.good  { background: #D1FAE5; }
+    .callout h4 { font-weight: 900; color: var(--navy); margin-bottom: 4px; font-size: .97rem; }
+    .callout p  { font-size: .93rem; }
+
+    /* ── SECTION DIVIDER ── */
+    .divider {
+      height: 4px;
+      background: linear-gradient(90deg, var(--sky), var(--mint), var(--sun), var(--coral), var(--lavender));
+      border-radius: 99px; margin: 48px 0;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow);
+      margin-bottom: 48px;
+    }
+    .toc h2 { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: var(--navy); margin-bottom: 18px; }
+    .toc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 580px) { .toc-list { grid-template-columns: 1fr; } }
+    .toc-list a {
+      display: flex; gap: 10px; align-items: center;
+      color: var(--navy); text-decoration: none;
+      font-weight: 700; font-size: .94rem;
+      padding: 10px 14px; border-radius: 12px;
+      background: var(--bg);
+      transition: background .2s, transform .15s;
+    }
+    .toc-list a:hover { background: var(--sky); color: #fff; transform: translateX(4px); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <span class="hero-emoji">💻</span>
+  <div class="badge">ICT E-Module · Level 7</div>
+  <h1>Learning ICT<br>Made Fun!</h1>
+  <p>Computers, Typing, Web Browsers & Email — all explained in a simple and fun way!</p>
+  <p>With Mr. Ifan Destya Adi Tama, S.Pd, Gr.</p>
+  <div class="header-chips">
+    <span class="chip">📅 2026 / 2027</span>
+    <span class="chip">🏫 Al-Abidin School</span>
+    <span class="chip">🎯 Grade 7A</span>
+  </div>
+</header>
+
+<!-- ══════════ STICKY NAV ══════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#ch1">🖥️ Computer Basics</a>
+    <a href="#ch2">📁 File Management</a>
+    <a href="#ch3">⌨️ Typing</a>
+    <a href="#ch4">🌐 Web Browser</a>
+    <a href="#ch5">📧 Email</a>
+    <a href="#ch6">🖐️ 10-Finger Typing</a>
+    <a href="#quiz-section">🎯 Quiz</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h2>📚 What's inside this module?</h2>
+    <ul class="toc-list">
+      <li><a href="#ch1">🖥️ 1. Computer Basics &amp; Posture</a></li>
+      <li><a href="#ch1b">🔧 2. Taking Care of Your Laptop</a></li>
+      <li><a href="#ch1c">⚡ 3. Turning On &amp; Off</a></li>
+      <li><a href="#ch2">📁 4. File Management</a></li>
+      <li><a href="#ch3">🖱️ 5. Mouse &amp; Keyboard</a></li>
+      <li><a href="#ch3b">⌨️ 6. Touch Typing (10 Fingers)</a></li>
+      <li><a href="#ch4">🌐 7. Web Browser</a></li>
+      <li><a href="#ch5">📧 8. Email</a></li>
+      <li><a href="#ch6">🖐️ 9. 10-Finger Typing Mastery</a></li>
+      <li><a href="#ch6-lab">🧪 10. Interactive Typing Lab</a></li>
+      <li><a href="#ch6-folder">📂 11. Folder &amp; ZIP Practice Lab</a></li>
+      <li><a href="#quiz-section">🎯 12. Quiz — Quizizz Challenge!</a></li>
+    </ul>
+  </div>
+
+  <!-- ══════ CHAPTER 1: COMPUTER BASICS ══════ -->
+  <section class="chapter" id="ch1">
+    <div class="chapter-header">
+      <div class="chapter-icon c1">🖥️</div>
+      <div>
+        <div class="chapter-sub">Chapter 1</div>
+        <h2 class="chapter-title">Computer Basics &amp; Good Posture</h2>
+      </div>
+    </div>
+
+    <!-- Good Posture Card -->
+    <div class="card blue">
+      <h3><span class="icon">🧍</span> Sitting Correctly at the Computer</h3>
+      <p>Did you know that sitting in the wrong position can hurt your eyes, back, and neck? Here are the golden rules to stay healthy while using a computer!</p>
+
+      <!-- SVG illustration: posture -->
+      <div class="illus">
+        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="background:#F0F6FF;border-radius:14px;">
+          <!-- desk -->
+          <rect x="120" y="220" width="460" height="14" rx="6" fill="#94A3B8"/>
+          <rect x="160" y="234" width="14" height="50" rx="4" fill="#94A3B8"/>
+          <rect x="526" y="234" width="14" height="50" rx="4" fill="#94A3B8"/>
+          <!-- monitor -->
+          <rect x="290" y="130" width="160" height="95" rx="8" fill="#1E293B"/>
+          <rect x="298" y="138" width="144" height="79" rx="4" fill="#4DAAFF"/>
+          <text x="370" y="183" text-anchor="middle" font-size="26" fill="white">💻</text>
+          <rect x="355" y="225" width="30" height="10" rx="3" fill="#64748B"/>
+          <rect x="330" y="235" width="80" height="8" rx="4" fill="#94A3B8"/>
+          <!-- person stick figure -->
+          <circle cx="188" cy="120" r="22" fill="#FFD234" stroke="#F59E0B" stroke-width="2"/>
+          <line x1="188" y1="142" x2="188" y2="210" stroke="#1B2D6B" stroke-width="6" stroke-linecap="round"/>
+          <line x1="188" y1="160" x2="150" y2="190" stroke="#1B2D6B" stroke-width="5" stroke-linecap="round"/>
+          <line x1="188" y1="160" x2="240" y2="185" stroke="#1B2D6B" stroke-width="5" stroke-linecap="round"/>
+          <line x1="188" y1="210" x2="165" y2="250" stroke="#1B2D6B" stroke-width="5" stroke-linecap="round"/>
+          <line x1="188" y1="210" x2="210" y2="250" stroke="#1B2D6B" stroke-width="5" stroke-linecap="round"/>
+          <!-- chair -->
+          <rect x="155" y="205" width="66" height="12" rx="6" fill="#3DD9A3"/>
+          <rect x="152" y="217" width="72" height="6" rx="3" fill="#2DD4BF"/>
+          <!-- arrows & labels -->
+          <text x="80" y="110" font-size="11" fill="#2563EB" font-weight="bold">👁️ Eyes level</text>
+          <text x="80" y="125" font-size="11" fill="#2563EB" font-weight="bold">with screen</text>
+          <line x1="130" y1="118" x2="165" y2="118" stroke="#2563EB" stroke-width="1.5" marker-end="url(#a)"/>
+          <text x="470" y="108" font-size="11" fill="#047857" font-weight="bold">40–75 cm</text>
+          <text x="470" y="123" font-size="11" fill="#047857" font-weight="bold">from eyes</text>
+          <line x1="468" y1="130" x2="450" y2="178" stroke="#047857" stroke-width="1.5"/>
+          <text x="50" y="195" font-size="11" fill="#9F1239" font-weight="bold">Back straight!</text>
+          <defs>
+            <marker id="a" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#2563EB"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <ul class="tip-list">
+        <li>
+          <span class="bullet bullet-blue">👁️</span>
+          <span><strong>Eyes:</strong> The monitor should be <strong>40–75 cm</strong> from your eyes — about the length of your arm. Use a screen filter to reduce eye strain and blink often!</span>
+        </li>
+        <li>
+          <span class="bullet bullet-blue">🏃</span>
+          <span><strong>Light:</strong> Don't let light shine directly into your eyes. Sit facing away from windows if you can.</span>
+        </li>
+        <li>
+          <span class="bullet bullet-blue">💪</span>
+          <span><strong>Elbows:</strong> Keep your elbows at the same height as the keyboard so your arms don't get tired.</span>
+        </li>
+        <li>
+          <span class="bullet bullet-blue">🪑</span>
+          <span><strong>Back &amp; neck:</strong> Sit straight! Use a chair with a backrest. Your head and neck should be in line with your body — no hunching!</span>
+        </li>
+        <li>
+          <span class="bullet bullet-blue">⏰</span>
+          <span><strong>Rest:</strong> Take a break every <strong>20 minutes</strong>. Look far away and stretch a little.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Laptop Care -->
+    <div class="card green" id="ch1b">
+      <h3><span class="icon">🔧</span> How to Take Care of Your Laptop</h3>
+      <p>A laptop is a tool — treat it well and it will last a long time! Here are the most important tips:</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="background:#F0FDF4;border-radius:14px;">
+          <!-- 6 icon boxes -->
+          <g>
+            <!-- 1: bag -->
+            <rect x="30" y="30" width="90" height="90" rx="14" fill="#DBEAFE"/>
+            <text x="75" y="90" text-anchor="middle" font-size="42">👜</text>
+            <text x="75" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">Use a laptop bag</text>
+            <!-- 2: food -->
+            <rect x="145" y="30" width="90" height="90" rx="14" fill="#FEF3C7"/>
+            <text x="190" y="90" text-anchor="middle" font-size="42">🚫🍔</text>
+            <text x="190" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">No food or drinks</text>
+            <!-- 3: floor -->
+            <rect x="260" y="30" width="90" height="90" rx="14" fill="#FFE4E6"/>
+            <text x="305" y="90" text-anchor="middle" font-size="42">🚫📐</text>
+            <text x="305" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">Don't put on floor</text>
+            <!-- 4: clean -->
+            <rect x="375" y="30" width="90" height="90" rx="14" fill="#D1FAE5"/>
+            <text x="420" y="90" text-anchor="middle" font-size="42">🧹</text>
+            <text x="420" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">Clean regularly</text>
+            <!-- 5: battery -->
+            <rect x="490" y="30" width="90" height="90" rx="14" fill="#EDE9FE"/>
+            <text x="535" y="90" text-anchor="middle" font-size="42">🔋</text>
+            <text x="535" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">Charge at 20%</text>
+            <!-- 6: flat surface -->
+            <rect x="605" y="30" width="80" height="90" rx="14" fill="#FEF9C3"/>
+            <text x="645" y="90" text-anchor="middle" font-size="42">🗄️</text>
+            <text x="645" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">Use flat surface</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="grid-2">
+        <div class="callout warn">
+          <span class="callout-icon">⚠️</span>
+          <div>
+            <h4>Don't do these!</h4>
+            <p>Don't use your laptop on a bed or pillow — heat can't escape and it will overheat! Don't put heavy things on top of it either.</p>
+          </div>
+        </div>
+        <div class="callout good">
+          <span class="callout-icon">✅</span>
+          <div>
+            <h4>Good habits</h4>
+            <p>Charge your laptop when it reaches 20%. Unplug when it hits 100%. This keeps the battery healthy longer!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Turning On & Off -->
+    <div class="card yellow" id="ch1c">
+      <h3><span class="icon">⚡</span> Turning Your Computer On &amp; Off</h3>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" style="background:#FFFBEB;border-radius:14px;">
+          <!-- 4 mode boxes -->
+          <g>
+            <rect x="30" y="30" width="140" height="120" rx="14" fill="#1E293B"/>
+            <text x="100" y="90" text-anchor="middle" font-size="36">🔴</text>
+            <text x="100" y="120" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Shutdown</text>
+            <text x="100" y="140" text-anchor="middle" font-size="10" fill="#94A3B8">Computer fully off</text>
+
+            <rect x="190" y="30" width="140" height="120" rx="14" fill="#1E3A5F"/>
+            <text x="260" y="90" text-anchor="middle" font-size="36">🟡</text>
+            <text x="260" y="120" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Sleep</text>
+            <text x="260" y="140" text-anchor="middle" font-size="10" fill="#94A3B8">Quick pause, RAM active</text>
+
+            <rect x="350" y="30" width="140" height="120" rx="14" fill="#1B2D6B"/>
+            <text x="420" y="90" text-anchor="middle" font-size="36">🔄</text>
+            <text x="420" y="120" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Restart</text>
+            <text x="420" y="140" text-anchor="middle" font-size="10" fill="#94A3B8">Fixes problems</text>
+
+            <rect x="510" y="30" width="160" height="120" rx="14" fill="#14532D"/>
+            <text x="590" y="90" text-anchor="middle" font-size="36">😴</text>
+            <text x="590" y="120" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Hibernate</text>
+            <text x="590" y="140" text-anchor="middle" font-size="10" fill="#94A3B8">Sleep + saves to HDD</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="did-you-know">
+        <span class="dyk-icon">💡</span>
+        <div>
+          <h4>The 4 Power Options — What's the difference?</h4>
+          <p><strong>Shutdown</strong> = Everything is off. Good for long breaks. You'll need to wait for boot-up next time.<br>
+          <strong>Sleep</strong> = Computer is resting but RAM is still on. Wake it up in seconds!<br>
+          <strong>Restart</strong> = Shuts down and starts again. Use this when something is not working right.<br>
+          <strong>Hibernate</strong> = Like sleep, but saves everything to the hard drive. No electricity used. Best of both worlds!</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:1rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--navy);margin:18px 0 10px;">✅ Steps to turn ON a desktop computer:</h3>
+      <ol class="steps">
+        <li>Plug the computer into the power outlet.</li>
+        <li>Make sure the keyboard and mouse are connected.</li>
+        <li>Turn on the monitor.</li>
+        <li>Press the <strong>Power button</strong> on the CPU case.</li>
+        <li>Wait for the computer to finish starting up (booting).</li>
+        <li>Your computer is now ready to use! 🎉</li>
+      </ol>
+
+      <h3 style="font-size:1rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--navy);margin:18px 0 10px;">✅ How to properly SHUT DOWN a laptop:</h3>
+      <ol class="steps">
+        <li>Close all open apps and save your work.</li>
+        <li>Remove any USB drives or flash disks.</li>
+        <li>Press the <strong>Windows key</strong> or <strong>Ctrl+Alt+Del</strong>.</li>
+        <li>Click the <strong>Power</strong> menu and choose <strong>Shut Down</strong>.</li>
+        <li>Press <strong>Enter</strong> and wait. Your laptop will turn off safely. ✅</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════ CHAPTER 2: FILE MANAGEMENT ══════ -->
+  <section class="chapter" id="ch2">
+    <div class="chapter-header">
+      <div class="chapter-icon c2">📁</div>
+      <div>
+        <div class="chapter-sub">Chapter 2</div>
+        <h2 class="chapter-title">File Management</h2>
+      </div>
+    </div>
+
+    <div class="card green">
+      <h3><span class="icon">📂</span> What is File Management?</h3>
+      <p>File management means organizing your files and folders on a computer — like keeping your bedroom tidy, but digitally! You can create folders, rename them, move files, and delete things you don't need.</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="background:#F0FDF4;border-radius:14px;">
+          <!-- folder structure diagram -->
+          <!-- Root folder -->
+          <rect x="290" y="20" width="120" height="50" rx="10" fill="#FFD234"/>
+          <text x="350" y="50" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B2D6B">📁 This PC</text>
+          <line x1="350" y1="70" x2="350" y2="100" stroke="#94A3B8" stroke-width="2"/>
+          <line x1="130" y1="100" x2="570" y2="100" stroke="#94A3B8" stroke-width="2"/>
+          <!-- sub folders -->
+          <line x1="130" y1="100" x2="130" y2="130" stroke="#94A3B8" stroke-width="2"/>
+          <rect x="70" y="130" width="120" height="50" rx="10" fill="#4DAAFF"/>
+          <text x="130" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="white">📄 My Documents</text>
+          <text x="130" y="168" text-anchor="middle" font-size="9" fill="white">Your files</text>
+
+          <line x1="280" y1="100" x2="280" y2="130" stroke="#94A3B8" stroke-width="2"/>
+          <rect x="220" y="130" width="120" height="50" rx="10" fill="#FF6B6B"/>
+          <text x="280" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="white">🗑️ Recycle Bin</text>
+          <text x="280" y="168" text-anchor="middle" font-size="9" fill="white">Deleted files</text>
+
+          <line x1="430" y1="100" x2="430" y2="130" stroke="#94A3B8" stroke-width="2"/>
+          <rect x="370" y="130" width="120" height="50" rx="10" fill="#3DD9A3"/>
+          <text x="430" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="white">🌐 Network</text>
+          <text x="430" y="168" text-anchor="middle" font-size="9" fill="white">Connected devices</text>
+
+          <line x1="570" y1="100" x2="570" y2="130" stroke="#94A3B8" stroke-width="2"/>
+          <rect x="510" y="130" width="120" height="50" rx="10" fill="#A78BFA"/>
+          <text x="570" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="white">⚙️ Settings</text>
+          <text x="570" y="168" text-anchor="middle" font-size="9" fill="white">Control panel</text>
+        </svg>
+      </div>
+
+      <h3 style="font-size:1rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--navy);margin:18px 0 10px;">🗂️ Creating a New Folder:</h3>
+      <div class="grid-2">
+        <div class="callout info">
+          <span class="callout-icon">💻</span>
+          <div>
+            <h4>Method 1 – Top menu</h4>
+            <p>Open Windows Explorer → Click <strong>New Folder</strong> in the Home tab → Type the name you want.</p>
+          </div>
+        </div>
+        <div class="callout good">
+          <span class="callout-icon">🖱️</span>
+          <div>
+            <h4>Method 2 – Right click</h4>
+            <p>Right-click on an empty space → Choose <strong>New → Folder</strong> → Type the folder name.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-size:1rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--navy);margin:18px 0 10px;">✏️ Renaming, Moving &amp; Deleting:</h3>
+      <ul class="tip-list">
+        <li><span class="bullet bullet-green">✏️</span><span><strong>Rename:</strong> Right-click the file/folder → choose <strong>Rename</strong> → type the new name. Or double-click slowly on the name.</span></li>
+        <li><span class="bullet bullet-green">✂️</span><span><strong>Move:</strong> Drag and drop to a new folder, OR right-click → <strong>Cut (Ctrl+X)</strong> → go to destination → <strong>Paste (Ctrl+V)</strong>.</span></li>
+        <li><span class="bullet bullet-green">🗑️</span><span><strong>Delete:</strong> Right-click → <strong>Delete</strong>. Files go to the Recycle Bin first. Right-click in Recycle Bin and choose <strong>Restore</strong> if you made a mistake!</span></li>
+      </ul>
+    </div>
+
+    <div class="card green">
+      <h3><span class="icon">📦</span> ZIP and RAR Files — Compressed Files!</h3>
+      <p>Sometimes files are very big and take a long time to send. We can <strong>compress</strong> them — like squishing a pillow into a bag — to make them smaller!</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" style="background:#F0FDF4;border-radius:14px;">
+          <text x="160" y="70" text-anchor="middle" font-size="50">📁📄📷</text>
+          <text x="160" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B2D6B">Many big files</text>
+          <text x="350" y="85" text-anchor="middle" font-size="40">➡️</text>
+          <text x="350" y="115" text-anchor="middle" font-size="11" fill="#047857">Compress!</text>
+          <text x="545" y="70" text-anchor="middle" font-size="50">🗜️</text>
+          <text x="545" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B2D6B">1 small ZIP/RAR</text>
+        </svg>
+      </div>
+
+      <div class="grid-2">
+        <div class="callout info">
+          <span class="callout-icon">🗜️</span>
+          <div>
+            <h4>Compress to ZIP</h4>
+            <p>Right-click the folder → <strong>Send to → Compressed (zipped) folder</strong>. Done!</p>
+          </div>
+        </div>
+        <div class="callout purple" style="background:#EDE9FE;">
+          <span class="callout-icon">📦</span>
+          <div>
+            <h4>Compress to RAR</h4>
+            <p>Right-click the folder → <strong>Add to "[folder name].rar"</strong> (requires WinRAR installed). RAR can make files up to 40% smaller!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════ CHAPTER 3: MOUSE & KEYBOARD ══════ -->
+  <section class="chapter" id="ch3">
+    <div class="chapter-header">
+      <div class="chapter-icon c3">⌨️</div>
+      <div>
+        <div class="chapter-sub">Chapter 3</div>
+        <h2 class="chapter-title">Mouse, Keyboard &amp; Touch Typing</h2>
+      </div>
+    </div>
+
+    <!-- Mouse -->
+    <div class="card yellow">
+      <h3><span class="icon">🖱️</span> Using a Mouse</h3>
+      <p>The mouse is an <strong>input device</strong> — it tells the computer what you want to do by moving a pointer on the screen.</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="background:#FFFBEB;border-radius:14px;">
+          <!-- Mouse body -->
+          <ellipse cx="350" cy="115" rx="65" ry="85" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2"/>
+          <path d="M285,110 Q350,55 415,110" fill="none" stroke="#94A3B8" stroke-width="2"/>
+          <!-- Left click -->
+          <ellipse cx="325" cy="90" rx="30" ry="22" fill="#4DAAFF" opacity=".85"/>
+          <text x="325" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEFT</text>
+          <!-- Right click -->
+          <ellipse cx="375" cy="90" rx="30" ry="22" fill="#FF6B6B" opacity=".85"/>
+          <text x="375" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="white">RIGHT</text>
+          <!-- Scroll wheel -->
+          <ellipse cx="350" cy="125" rx="10" ry="16" fill="#94A3B8"/>
+          <text x="350" y="129" text-anchor="middle" font-size="8" fill="white">↑↓</text>
+          <!-- Labels -->
+          <text x="200" y="75" font-size="12" font-weight="bold" fill="#1D4ED8">👆 Left Click</text>
+          <text x="200" y="92" font-size="10" fill="#1B2D6B">Open / Select</text>
+          <line x1="280" y1="83" x2="296" y2="85" stroke="#1D4ED8" stroke-width="1.5"/>
+
+          <text x="452" y="75" font-size="12" font-weight="bold" fill="#9F1239">👆 Right Click</text>
+          <text x="452" y="92" font-size="10" fill="#1B2D6B">Show menu options</text>
+          <line x1="407" y1="85" x2="450" y2="78" stroke="#9F1239" stroke-width="1.5"/>
+
+          <text x="200" y="135" font-size="12" font-weight="bold" fill="#047857">🔄 Scroll Wheel</text>
+          <text x="200" y="151" font-size="10" fill="#1B2D6B">Scroll up / down</text>
+          <line x1="340" y1="130" x2="298" y2="140" stroke="#047857" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <ul class="tip-list">
+        <li><span class="bullet bullet-yellow">👆</span><span><strong>Left Click:</strong> Opens programs, selects items, clicks buttons. Most used!</span></li>
+        <li><span class="bullet bullet-yellow">👆</span><span><strong>Right Click:</strong> Shows a menu of options (like right-clicking on your desktop to change the wallpaper).</span></li>
+        <li><span class="bullet bullet-yellow">👆👆</span><span><strong>Double Click:</strong> Two quick clicks — opens apps and files.</span></li>
+        <li><span class="bullet bullet-yellow">🤚</span><span><strong>Drag and Drop:</strong> Hold the left button and move the mouse to drag an icon or file to a new spot, then release.</span></li>
+      </ul>
+    </div>
+
+    <!-- Keyboard -->
+    <div class="card yellow">
+      <h3><span class="icon">⌨️</span> Parts of the Keyboard</h3>
+      <p>The keyboard is another input device. It has <strong>4 types of keys</strong>:</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" style="background:#FFFBEB;border-radius:14px;">
+          <rect x="30" y="20" width="640" height="140" rx="14" fill="#1E293B"/>
+          <!-- F-keys row (orange) -->
+          <rect x="50" y="35" width="600" height="28" rx="6" fill="#F59E0B" opacity=".8"/>
+          <text x="350" y="53" text-anchor="middle" font-size="11" fill="white" font-weight="bold">🔧 Function Keys — F1 to F12 (special commands)</text>
+          <!-- main keys (blue) -->
+          <rect x="50" y="72" width="440" height="52" rx="6" fill="#4DAAFF" opacity=".85"/>
+          <text x="270" y="102" text-anchor="middle" font-size="11" fill="white" font-weight="bold">⌨️ Typing Keys — Letters, Numbers, Punctuation (QWERTY layout)</text>
+          <!-- arrows (green) -->
+          <rect x="500" y="72" width="90" height="52" rx="6" fill="#3DD9A3" opacity=".85"/>
+          <text x="545" y="102" text-anchor="middle" font-size="11" fill="white" font-weight="bold">⬆️⬇️ Arrow Keys</text>
+          <!-- numpad (purple) -->
+          <rect x="600" y="35" width="70" height="89" rx="6" fill="#A78BFA" opacity=".85"/>
+          <text x="635" y="82" text-anchor="middle" font-size="10" fill="white" font-weight="bold">🔢 Num Pad</text>
+          <!-- ctrl row (red) -->
+          <rect x="50" y="133" width="600" height="20" rx="5" fill="#FF6B6B" opacity=".75"/>
+          <text x="350" y="147" text-anchor="middle" font-size="10" fill="white" font-weight="bold">🎮 Control Keys — Ctrl, Alt, Shift, Space, Escape, Tab, Backspace, Delete, Home, End, Page Up/Down</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Keyboard Shortcuts -->
+    <div class="card yellow">
+      <h3><span class="icon">⚡</span> Super-Useful Keyboard Shortcuts!</h3>
+      <p>Shortcuts let you work <em>faster</em> — like a superpower for your fingers! Learn these first:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>What it does</th><th>Remember it as…</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Ctrl + C</strong></td><td>Copy</td><td>C = Copy 📋</td></tr>
+            <tr><td><strong>Ctrl + V</strong></td><td>Paste</td><td>V = staVe it down 📌</td></tr>
+            <tr><td><strong>Ctrl + X</strong></td><td>Cut</td><td>X = snip it ✂️</td></tr>
+            <tr><td><strong>Ctrl + Z</strong></td><td>Undo (go back)</td><td>Z = ZZap it back! ⚡</td></tr>
+            <tr><td><strong>Ctrl + S</strong></td><td>Save</td><td>S = Save 💾</td></tr>
+            <tr><td><strong>Ctrl + A</strong></td><td>Select all</td><td>A = All ✅</td></tr>
+            <tr><td><strong>Ctrl + B</strong></td><td>Bold text</td><td>B = Bold 💪</td></tr>
+            <tr><td><strong>Ctrl + P</strong></td><td>Print</td><td>P = Print 🖨️</td></tr>
+            <tr><td><strong>Ctrl + N</strong></td><td>New document</td><td>N = New 🆕</td></tr>
+            <tr><td><strong>Alt + F4</strong></td><td>Close window</td><td>Close it fast! 🚪</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Touch Typing -->
+    <div class="card yellow" id="ch3b">
+      <h3><span class="icon">🤙</span> Touch Typing — The 10-Finger Method!</h3>
+      <p>Touch typing means you can type <strong>without looking at the keyboard</strong>! It feels hard at first, but with practice you'll type much faster. The goal is <strong>15+ words per minute</strong>!</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 230" xmlns="http://www.w3.org/2000/svg" style="background:#FFFBEB;border-radius:14px;">
+          <!-- keyboard layout simplified -->
+          <rect x="30" y="20" width="640" height="120" rx="12" fill="#1E293B"/>
+          <!-- home row highlighted -->
+          <rect x="80" y="75" width="380" height="30" rx="6" fill="#FFD234" opacity=".3"/>
+          <!-- finger position labels -->
+          <text x="95" y="95" font-size="16" fill="#FFD234" font-weight="bold">A</text>
+          <text x="130" y="95" font-size="16" fill="#FFD234" font-weight="bold">S</text>
+          <text x="165" y="95" font-size="16" fill="#FFD234" font-weight="bold">D</text>
+          <text x="200" y="95" font-size="16" fill="#FFD234" font-weight="bold">F</text>
+          <text x="250" y="95" font-size="16" fill="#CBD5E1" font-weight="bold">G H</text>
+          <text x="310" y="95" font-size="16" fill="#4DAAFF" font-weight="bold">J</text>
+          <text x="345" y="95" font-size="16" fill="#4DAAFF" font-weight="bold">K</text>
+          <text x="380" y="95" font-size="16" fill="#4DAAFF" font-weight="bold">L</text>
+          <text x="415" y="95" font-size="16" fill="#4DAAFF" font-weight="bold">;</text>
+          <!-- HOME ROW label -->
+          <rect x="460" y="78" width="95" height="24" rx="8" fill="#FFD234"/>
+          <text x="507" y="94" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B2D6B">HOME ROW ⭐</text>
+
+          <!-- left hand -->
+          <text x="50" y="175" font-size="11" font-weight="bold" fill="#FFD234">LEFT HAND</text>
+          <text x="50" y="195" font-size="28">🤚</text>
+          <text x="90" y="195" font-size="10" fill="#1B2D6B">Pinky → A<br/>Ring → S<br/>Middle → D<br/>Index → F</text>
+
+          <!-- right hand -->
+          <text x="450" y="175" font-size="11" font-weight="bold" fill="#4DAAFF">RIGHT HAND</text>
+          <text x="600" y="195" font-size="28">🖐️</text>
+          <text x="450" y="195" font-size="10" fill="#1B2D6B">Index → J<br/>Middle → K<br/>Ring → L<br/>Pinky → ;</text>
+
+          <!-- space bar note -->
+          <text x="350" y="200" text-anchor="middle" font-size="11" fill="#047857" font-weight="bold">Both THUMBS → SPACE BAR</text>
+        </svg>
+      </div>
+
+      <ul class="tip-list">
+        <li><span class="bullet bullet-yellow">🏠</span><span><strong>Start at the Home Row:</strong> Left fingers rest on <strong>A, S, D, F</strong>. Right fingers rest on <strong>J, K, L, ;</strong>. Both thumbs rest on the <strong>Space bar</strong>.</span></li>
+        <li><span class="bullet bullet-yellow">👀</span><span><strong>Don't look at the keyboard!</strong> It feels weird at first, but just keep your eyes on the screen. Mistakes are OK — you'll improve!</span></li>
+        <li><span class="bullet bullet-yellow">🚫</span><span><strong>Hands never cross:</strong> Left hand types the left side of the keyboard. Right hand types the right side. They never swap sides!</span></li>
+        <li><span class="bullet bullet-yellow">🎮</span><span><strong>Practice daily</strong> on <a href="https://10fastfingers.com" target="_blank" style="color:var(--sky);">10FastFingers.com</a> (Indonesian typing test available!)</span></li>
+      </ul>
+
+      <div class="did-you-know">
+        <span class="dyk-icon">🏆</span>
+        <div>
+          <h4>Fun Goal!</h4>
+          <p>When you first start, you might type only 5 words per minute. But with practice, touch typists can reach <strong>60–100 words per minute</strong>! That's 1–2 words every second! 🚀</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════ CHAPTER 4: WEB BROWSER ══════ -->
+  <section class="chapter" id="ch4">
+    <div class="chapter-header">
+      <div class="chapter-icon c4">🌐</div>
+      <div>
+        <div class="chapter-sub">Chapter 4</div>
+        <h2 class="chapter-title">Web Browser</h2>
+      </div>
+    </div>
+
+    <div class="card purple" style="border-color:var(--lavender)">
+      <h3><span class="icon">🌐</span> What is a Web Browser?</h3>
+      <p>A <strong>web browser</strong> is software that lets you visit websites on the internet. Think of it like a magic window 🪟 that shows you the whole internet!</p>
+
+      <div class="did-you-know">
+        <span class="dyk-icon">🤔</span>
+        <div>
+          <h4>Browser vs. Search Engine — What's the difference?</h4>
+          <p><strong>Browser</strong> = the app you use (like Google Chrome, Firefox). It's like a car 🚗.<br>
+          <strong>Search Engine</strong> = the service that finds websites (like Google Search, Bing). It's like a road map 🗺️.<br>
+          You use the <em>car</em> to follow the <em>map</em>!</p>
+        </div>
+      </div>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg" style="background:#F5F3FF;border-radius:14px;">
+          <!-- browser window -->
+          <rect x="80" y="20" width="540" height="130" rx="12" fill="#1E293B"/>
+          <!-- tab bar -->
+          <rect x="80" y="20" width="540" height="28" rx="12" fill="#334155"/>
+          <rect x="80" y="32" width="540" height="8" fill="#334155"/>
+          <rect x="96" y="24" width="100" height="22" rx="6" fill="#4DAAFF"/>
+          <text x="146" y="38" text-anchor="middle" font-size="10" fill="white">🌐 New Tab</text>
+          <!-- address bar -->
+          <rect x="96" y="57" width="508" height="20" rx="6" fill="#475569"/>
+          <text x="200" y="71" font-size="10" fill="#94A3B8">🔒 www.example.com</text>
+          <!-- content area -->
+          <rect x="96" y="85" width="508" height="55" rx="6" fill="#F0F6FF"/>
+          <text x="350" y="117" text-anchor="middle" font-size="20">🌍 Welcome to the Internet!</text>
+          <!-- legend -->
+          <text x="96" y="162" font-size="10" fill="#94A3B8">← Back  → Forward  ↻ Reload  ⭐ Bookmark</text>
+        </svg>
+      </div>
+
+      <h3 style="font-size:1rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--navy);margin:16px 0 10px;">✨ What can a browser do for you?</h3>
+      <ul class="tip-list">
+        <li><span class="bullet bullet-purple">🔍</span><span><strong>Search for information:</strong> Type what you need and find it instantly!</span></li>
+        <li><span class="bullet bullet-purple">⭐</span><span><strong>Save your favorite pages:</strong> Use the bookmark feature so you can go back without remembering the address.</span></li>
+        <li><span class="bullet bullet-purple">🔒</span><span><strong>Protect you from bad websites:</strong> The browser checks if a website is safe before you visit it.</span></li>
+        <li><span class="bullet bullet-purple">🖥️</span><span><strong>Show web pages correctly:</strong> Websites are written in code (HTML, CSS, JavaScript). The browser translates it into text, images, and videos you can see.</span></li>
+        <li><span class="bullet bullet-purple">🔧</span><span><strong>Support search engines:</strong> Google, Bing, and DuckDuckGo work through your browser to find pages.</span></li>
+      </ul>
+    </div>
+
+    <div class="card purple" style="border-color:var(--lavender)">
+      <h3><span class="icon">🏆</span> Popular Web Browsers</h3>
+      <div class="browser-row">
+        <div class="browser-item">
+          <div class="browser-circle" style="background:#FEF3C7;">🦊</div>
+          Mozilla Firefox
+        </div>
+        <div class="browser-item">
+          <div class="browser-circle" style="background:#FFE4E6;">🅾️</div>
+          Opera
+        </div>
+        <div class="browser-item">
+          <div class="browser-circle" style="background:#D1FAE5;">🧭</div>
+          Safari
+        </div>
+        <div class="browser-item">
+          <div class="browser-circle" style="background:#DBEAFE;">🌐</div>
+          Google Chrome
+        </div>
+        <div class="browser-item">
+          <div class="browser-circle" style="background:#EDE9FE;">🔵</div>
+          Microsoft Edge
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:.9rem;margin-top:8px;">All of these can be used for free! Google Chrome is the most popular. 🏆</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════ CHAPTER 5: EMAIL ══════ -->
+  <section class="chapter" id="ch5">
+    <div class="chapter-header">
+      <div class="chapter-icon c5">📧</div>
+      <div>
+        <div class="chapter-sub">Chapter 5</div>
+        <h2 class="chapter-title">Email</h2>
+      </div>
+    </div>
+
+    <div class="card red" style="border-color:var(--coral)">
+      <h3><span class="icon">📧</span> What is Email?</h3>
+      <p>Email (Electronic Mail) is like a digital letter 📬. You can send messages, documents, photos, and even videos — instantly — to anyone in the world! You just need their email address.</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" style="background:#FFF1F2;border-radius:14px;">
+          <!-- sender -->
+          <circle cx="120" cy="90" r="45" fill="#DBEAFE"/>
+          <text x="120" y="85" text-anchor="middle" font-size="28">👦</text>
+          <text x="120" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">You</text>
+          <text x="120" y="125" text-anchor="middle" font-size="9" fill="#6B7A99">your@gmail.com</text>
+
+          <!-- arrow with envelope -->
+          <line x1="170" y1="90" x2="530" y2="90" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="6,4"/>
+          <text x="350" y="70" text-anchor="middle" font-size="32">📧</text>
+          <text x="350" y="115" text-anchor="middle" font-size="11" fill="#9F1239" font-weight="bold">Email flies through</text>
+          <text x="350" y="130" text-anchor="middle" font-size="11" fill="#9F1239" font-weight="bold">the internet instantly!</text>
+
+          <!-- receiver -->
+          <circle cx="580" cy="90" r="45" fill="#D1FAE5"/>
+          <text x="580" y="85" text-anchor="middle" font-size="28">👩‍🏫</text>
+          <text x="580" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B2D6B">Teacher</text>
+          <text x="580" y="125" text-anchor="middle" font-size="9" fill="#6B7A99">teacher@school.com</text>
+        </svg>
+      </div>
+
+      <h3 style="font-size:1rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--navy);margin:16px 0 10px;">📋 3 Main Uses of Email:</h3>
+      <ul class="tip-list">
+        <li><span class="bullet bullet-red">💬</span><span><strong>Communication:</strong> Send messages with text, pictures, documents, and videos to friends, family, or teachers.</span></li>
+        <li><span class="bullet bullet-red">📢</span><span><strong>Promotions:</strong> Businesses use email to tell you about new products or sales (you've probably seen these in your inbox!).</span></li>
+        <li><span class="bullet bullet-red">🔔</span><span><strong>Notifications &amp; reminders:</strong> Get notified about deadlines, meetings, or updates.</span></li>
+      </ul>
+    </div>
+
+    <!-- Pros and Cons -->
+    <div class="card red" style="border-color:var(--coral)">
+      <h3><span class="icon">⚖️</span> Good Things &amp; Bad Things About Email</h3>
+      <div class="compare-grid">
+        <div class="compare-box pros">
+          <h4>✅ The Good Stuff</h4>
+          <ul>
+            <li>Free to use 🆓</li>
+            <li>Can attach documents &amp; photos</li>
+            <li>Send to many people at once</li>
+            <li>Eco-friendly — no paper! 🌱</li>
+            <li>Works on phone, tablet, laptop</li>
+            <li>Organized with folders &amp; labels</li>
+          </ul>
+        </div>
+        <div class="compare-box cons">
+          <h4>❌ Watch Out For…</h4>
+          <ul>
+            <li>SPAM — unwanted junk emails</li>
+            <li>Viruses hidden in attachments</li>
+            <li>Easy to send to the wrong person</li>
+            <li>No facial expressions or tone of voice</li>
+            <li>Phishing — fake emails that trick you!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <span class="callout-icon">🚨</span>
+        <div>
+          <h4>Stay Safe Online!</h4>
+          <p>Never open attachments from people you don't know. If an email asks for your password or money, it is almost always a SCAM. Ask a trusted adult! 🛡️</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sending Email -->
+    <div class="card red" style="border-color:var(--coral)">
+      <h3><span class="icon">📤</span> How to Send an Email (Gmail)</h3>
+
+      <div class="illus">
+        <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="background:#FFF1F2;border-radius:14px;">
+          <!-- Gmail-like compose window -->
+          <rect x="220" y="20" width="400" height="165" rx="12" fill="#1E293B" opacity=".95"/>
+          <rect x="220" y="20" width="400" height="32" rx="12" fill="#334155"/>
+          <rect x="220" y="40" width="400" height="12" fill="#334155"/>
+          <text x="380" y="41" text-anchor="middle" font-size="12" fill="white" font-weight="bold">📧 New Message</text>
+          <rect x="236" y="59" width="368" height="22" rx="5" fill="#475569"/>
+          <text x="244" y="74" font-size="10" fill="#94A3B8">To: teacher@school.com</text>
+          <rect x="236" y="87" width="368" height="22" rx="5" fill="#475569"/>
+          <text x="244" y="102" font-size="10" fill="#94A3B8">Subject: My Homework</text>
+          <rect x="236" y="115" width="368" height="55" rx="5" fill="#F0F6FF"/>
+          <text x="244" y="133" font-size="10" fill="#1B2D6B">Dear teacher,</text>
+          <text x="244" y="148" font-size="10" fill="#1B2D6B">Please find my homework attached.</text>
+          <!-- send button -->
+          <rect x="236" y="173" width="60" height="20" rx="8" fill="#4DAAFF"/>
+          <text x="266" y="186" text-anchor="middle" font-size="10" fill="white" font-weight="bold">➤ SEND</text>
+          <!-- steps on left -->
+          <text x="30" y="50" font-size="11" font-weight="bold" fill="#9F1239">1. Open Gmail</text>
+          <text x="30" y="75" font-size="11" font-weight="bold" fill="#9F1239">2. Click "Compose"</text>
+          <text x="30" y="100" font-size="11" font-weight="bold" fill="#9F1239">3. Fill in "To"</text>
+          <text x="30" y="125" font-size="11" font-weight="bold" fill="#9F1239">4. Add Subject</text>
+          <text x="30" y="150" font-size="11" font-weight="bold" fill="#9F1239">5. Write message</text>
+          <text x="30" y="175" font-size="11" font-weight="bold" fill="#9F1239">6. Click Send! ✅</text>
+        </svg>
+      </div>
+
+      <ol class="steps">
+        <li>Open your browser and go to <strong>gmail.com</strong>.</li>
+        <li>Log in with your Google account.</li>
+        <li>Click the big <strong>"Compose"</strong> (Tulis) button at the top left.</li>
+        <li>In the <strong>"To"</strong> field, type the recipient's email address.</li>
+        <li>Add a <strong>Subject</strong> — this is like the title of your email.</li>
+        <li>Write your message in the big box.</li>
+        <li>Click the <strong>Send</strong> button. Done! 🎉</li>
+      </ol>
+
+      <div class="did-you-know">
+        <span class="dyk-icon">📌</span>
+        <div>
+          <h4>Pro Tip: CC and BCC</h4>
+          <p><strong>CC</strong> (Carbon Copy) = Send a copy to someone else, and everyone can see who got it.<br>
+          <strong>BCC</strong> (Blind Carbon Copy) = Same but the other recipients can't see who else got it. Great for privacy!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CHAPTER 6: 10-FINGER TYPING MASTERY ══════ -->
+  <div class="divider"></div>
+  <section class="chapter" id="ch6">
+    <div class="chapter-header">
+      <div class="chapter-icon c6">🖐️</div>
+      <div>
+        <div class="chapter-sub">Chapter 6</div>
+        <h2 class="chapter-title">10-Finger Typing Mastery</h2>
+      </div>
+    </div>
+
+    <!-- Why 10-finger -->
+    <div class="card red" style="border-color:#F472B6;">
+      <h3><span class="icon">🚀</span> Why Learn 10-Finger Typing?</h3>
+      <p>Most people type with only 2 or 4 fingers — they look down at the keyboard and hunt for each key. <strong>Touch typing with all 10 fingers</strong> is completely different! You train your fingers to <em>remember</em> where every key is, so you never need to look down.</p>
+
+      <div class="compare-grid">
+        <div class="compare-box cons">
+          <h4>🐢 Hunt &amp; Peck (2 fingers)</h4>
+          <ul>
+            <li>Look at keyboard constantly</li>
+            <li>Average: 20–30 WPM</li>
+            <li>Tiring and slow</li>
+            <li>Hard to improve further</li>
+            <li>Eyes jumping between screen &amp; keys</li>
+          </ul>
+        </div>
+        <div class="compare-box pros">
+          <h4>🚀 Touch Typing (10 fingers)</h4>
+          <ul>
+            <li>Eyes stay on the screen</li>
+            <li>Average: 50–80 WPM when trained</li>
+            <li>Fast &amp; efficient</li>
+            <li>Can reach 100+ WPM with practice</li>
+            <li>Hands work like a pianist's!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="did-you-know">
+        <span class="dyk-icon">⚡</span>
+        <div>
+          <h4>WPM = Words Per Minute</h4>
+          <p>Average typist: <strong>40 WPM</strong> · Good typist: <strong>60–80 WPM</strong> · Professional: <strong>80–100 WPM</strong> · World record: <strong>216 WPM!</strong> 🏆 Your target for this year: <strong>15+ WPM</strong> — you've got this!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finger Map -->
+    <div class="card red" style="border-color:#F472B6;">
+      <h3><span class="icon">🗺️</span> Which Finger Presses Which Key?</h3>
+      <p>Each finger is responsible for a specific column of keys. Your fingers never cross into the other hand's zone! Study the colour map below:</p>
+
+      <div class="finger-map">
+        <div class="finger-badge f-pink">🩷 Left Pinky<br><small>`, 1, Q, A, Z, Shift</small></div>
+        <div class="finger-badge f-red">❤️ Left Ring<br><small>2, W, S, X</small></div>
+        <div class="finger-badge f-orange">🧡 Left Middle<br><small>3, E, D, C</small></div>
+        <div class="finger-badge f-green">💚 Left Index<br><small>4, 5, R, T, F, G, V, B</small></div>
+        <div class="finger-badge f-blue">👍 Both Thumbs<br><small>SPACE BAR</small></div>
+        <div class="finger-badge f-teal">💚 Right Index<br><small>6, 7, Y, U, H, J, N, M</small></div>
+        <div class="finger-badge f-orange">🧡 Right Middle<br><small>8, I, K, ,</small></div>
+        <div class="finger-badge f-red">❤️ Right Ring<br><small>9, O, L, .</small></div>
+        <div class="finger-badge f-pink">🩷 Right Pinky<br><small>0, P, ;, /, Shift, Enter</small></div>
+      </div>
+
+      <!-- Colour-coded keyboard SVG -->
+      <div class="illus">
+        <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" style="background:#1E293B;border-radius:14px;padding:14px;">
+          <!-- Row 0: Number row -->
+          <!-- pinky-l -->
+          <rect x="10"  y="10"  width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="29"  y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">`</text>
+          <rect x="52"  y="10"  width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="71"  y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">1</text>
+          <!-- ring-l -->
+          <rect x="94"  y="10"  width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="1.5"/>
+          <text x="113" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9F1239">2</text>
+          <!-- mid-l -->
+          <rect x="136" y="10"  width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="155" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">3</text>
+          <!-- idx-l -->
+          <rect x="178" y="10"  width="38" height="34" rx="6" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5"/>
+          <text x="197" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#065F46">4</text>
+          <rect x="220" y="10"  width="38" height="34" rx="6" fill="#A7F3D0" stroke="#059669" stroke-width="1.5"/>
+          <text x="239" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#065F46">5</text>
+          <!-- idx-r -->
+          <rect x="262" y="10"  width="38" height="34" rx="6" fill="#CCFBF1" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="281" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#134E4A">6</text>
+          <rect x="304" y="10"  width="38" height="34" rx="6" fill="#C7D2FE" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="323" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#3730A3">7</text>
+          <!-- mid-r -->
+          <rect x="346" y="10"  width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="365" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">8</text>
+          <!-- ring-r -->
+          <rect x="388" y="10"  width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="1.5"/>
+          <text x="407" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9F1239">9</text>
+          <!-- pinky-r -->
+          <rect x="430" y="10"  width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="449" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">0</text>
+          <rect x="472" y="10"  width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="491" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">-</text>
+          <rect x="514" y="10"  width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="533" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">=</text>
+          <rect x="556" y="10"  width="70" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="591" y="32"  text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">BKSP</text>
+
+          <!-- Row 1: QWERTY -->
+          <rect x="10"  y="49" width="54" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="37"  y="71" text-anchor="middle" font-size="11" fill="#475569">TAB</text>
+          <!-- pinky-l -->
+          <rect x="68"  y="49" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="87"  y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#9D174D">Q</text>
+          <!-- ring-l -->
+          <rect x="110" y="49" width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="1.5"/>
+          <text x="129" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#9F1239">W</text>
+          <!-- mid-l -->
+          <rect x="152" y="49" width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="171" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">E</text>
+          <!-- idx-l -->
+          <rect x="194" y="49" width="38" height="34" rx="6" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5"/>
+          <text x="213" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#065F46">R</text>
+          <rect x="236" y="49" width="38" height="34" rx="6" fill="#A7F3D0" stroke="#059669" stroke-width="1.5"/>
+          <text x="255" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#065F46">T</text>
+          <!-- idx-r -->
+          <rect x="278" y="49" width="38" height="34" rx="6" fill="#CCFBF1" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="297" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#134E4A">Y</text>
+          <rect x="320" y="49" width="38" height="34" rx="6" fill="#C7D2FE" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="339" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#3730A3">U</text>
+          <!-- mid-r -->
+          <rect x="362" y="49" width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="381" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">I</text>
+          <!-- ring-r -->
+          <rect x="404" y="49" width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="1.5"/>
+          <text x="423" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#9F1239">O</text>
+          <!-- pinky-r -->
+          <rect x="446" y="49" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="465" y="71" text-anchor="middle" font-size="13" font-weight="bold" fill="#9D174D">P</text>
+          <rect x="488" y="49" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="507" y="71" text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">[</text>
+          <rect x="530" y="49" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="549" y="71" text-anchor="middle" font-size="11" font-weight="bold" fill="#9D174D">]</text>
+          <rect x="572" y="49" width="54" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="599" y="71" text-anchor="middle" font-size="10" fill="#475569">\</text>
+
+          <!-- Row 2: HOME ROW (ASDF...) -->
+          <rect x="10"  y="88" width="62" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="41"  y="110" text-anchor="middle" font-size="10" fill="#475569">CAPS</text>
+          <!-- pinky-l -->
+          <rect x="76"  y="88" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="2.5"/>
+          <text x="95"  y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#9D174D">A</text>
+          <!-- ring-l -->
+          <rect x="118" y="88" width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="2.5"/>
+          <text x="137" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#9F1239">S</text>
+          <!-- mid-l -->
+          <rect x="160" y="88" width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2.5"/>
+          <text x="179" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">D</text>
+          <!-- idx-l (home marker on F) -->
+          <rect x="202" y="88" width="38" height="34" rx="6" fill="#D1FAE5" stroke="#10B981" stroke-width="2.5"/>
+          <text x="221" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#065F46">F</text>
+          <!-- notch on F -->
+          <rect x="215" y="118" width="12" height="4" rx="2" fill="#065F46"/>
+          <rect x="244" y="88" width="38" height="34" rx="6" fill="#A7F3D0" stroke="#059669" stroke-width="2.5"/>
+          <text x="263" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#065F46">G</text>
+          <!-- idx-r -->
+          <rect x="286" y="88" width="38" height="34" rx="6" fill="#CCFBF1" stroke="#14B8A6" stroke-width="2.5"/>
+          <text x="305" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#134E4A">H</text>
+          <!-- idx-r (home on J) -->
+          <rect x="328" y="88" width="38" height="34" rx="6" fill="#C7D2FE" stroke="#6366F1" stroke-width="2.5"/>
+          <text x="347" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#3730A3">J</text>
+          <rect x="341" y="118" width="12" height="4" rx="2" fill="#3730A3"/>
+          <!-- mid-r -->
+          <rect x="370" y="88" width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2.5"/>
+          <text x="389" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">K</text>
+          <!-- ring-r -->
+          <rect x="412" y="88" width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="2.5"/>
+          <text x="431" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#9F1239">L</text>
+          <!-- pinky-r -->
+          <rect x="454" y="88" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="2.5"/>
+          <text x="473" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#9D174D">;</text>
+          <rect x="496" y="88" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="2.5"/>
+          <text x="515" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#9D174D">'</text>
+          <rect x="538" y="88" width="88" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="582" y="110" text-anchor="middle" font-size="11" fill="#475569">ENTER</text>
+
+          <!-- HOME ROW label -->
+          <rect x="634" y="92" width="82" height="22" rx="8" fill="#FFD234"/>
+          <text x="675" y="107" text-anchor="middle" font-size="9" font-weight="bold" fill="#1B2D6B">⭐ HOME ROW</text>
+
+          <!-- Row 3: ZXCV... -->
+          <rect x="10"  y="127" width="78" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="49"  y="149" text-anchor="middle" font-size="10" fill="#475569">SHIFT</text>
+          <!-- pinky-l -->
+          <rect x="92"  y="127" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="111" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#9D174D">Z</text>
+          <!-- ring-l -->
+          <rect x="134" y="127" width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="1.5"/>
+          <text x="153" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#9F1239">X</text>
+          <!-- mid-l -->
+          <rect x="176" y="127" width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="195" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">C</text>
+          <!-- idx-l -->
+          <rect x="218" y="127" width="38" height="34" rx="6" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5"/>
+          <text x="237" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#065F46">V</text>
+          <rect x="260" y="127" width="38" height="34" rx="6" fill="#A7F3D0" stroke="#059669" stroke-width="1.5"/>
+          <text x="279" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#065F46">B</text>
+          <!-- idx-r -->
+          <rect x="302" y="127" width="38" height="34" rx="6" fill="#CCFBF1" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="321" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#134E4A">N</text>
+          <rect x="344" y="127" width="38" height="34" rx="6" fill="#C7D2FE" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="363" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#3730A3">M</text>
+          <!-- mid-r -->
+          <rect x="386" y="127" width="38" height="34" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="405" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">,</text>
+          <!-- ring-r -->
+          <rect x="428" y="127" width="38" height="34" rx="6" fill="#FFE4E6" stroke="#F87171" stroke-width="1.5"/>
+          <text x="447" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#9F1239">.</text>
+          <!-- pinky-r -->
+          <rect x="470" y="127" width="38" height="34" rx="6" fill="#FFD6E7" stroke="#E879A0" stroke-width="1.5"/>
+          <text x="489" y="149" text-anchor="middle" font-size="13" font-weight="bold" fill="#9D174D">/</text>
+          <rect x="512" y="127" width="114" height="34" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="569" y="149" text-anchor="middle" font-size="10" fill="#475569">SHIFT</text>
+
+          <!-- Row 4: Space bar row -->
+          <rect x="10"  y="166" width="54" height="30" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="37"  y="185" text-anchor="middle" font-size="9" fill="#475569">CTRL</text>
+          <rect x="68"  y="166" width="38" height="30" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="87"  y="185" text-anchor="middle" font-size="9" fill="#475569">WIN</text>
+          <rect x="110" y="166" width="38" height="30" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="129" y="185" text-anchor="middle" font-size="9" fill="#475569">ALT</text>
+          <!-- SPACE -->
+          <rect x="152" y="166" width="280" height="30" rx="6" fill="#DBEAFE" stroke="#93C5FD" stroke-width="2"/>
+          <text x="292" y="185" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E40AF">S P A C E — Both Thumbs</text>
+          <rect x="436" y="166" width="38" height="30" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="455" y="185" text-anchor="middle" font-size="9" fill="#475569">ALT</text>
+          <rect x="478" y="166" width="38" height="30" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="497" y="185" text-anchor="middle" font-size="9" fill="#475569">FN</text>
+          <rect x="520" y="166" width="54" height="30" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+          <text x="547" y="185" text-anchor="middle" font-size="9" fill="#475569">CTRL</text>
+
+          <!-- Legend -->
+          <text x="10"  y="218" font-size="9" fill="#FFD6E7">■</text><text x="22" y="218" font-size="9" fill="#94A3B8">Pinky</text>
+          <text x="65"  y="218" font-size="9" fill="#FFE4E6">■</text><text x="77" y="218" font-size="9" fill="#94A3B8">Ring</text>
+          <text x="108" y="218" font-size="9" fill="#FEF3C7">■</text><text x="120" y="218" font-size="9" fill="#94A3B8">Middle</text>
+          <text x="163" y="218" font-size="9" fill="#D1FAE5">■</text><text x="175" y="218" font-size="9" fill="#94A3B8">L.Index</text>
+          <text x="220" y="218" font-size="9" fill="#CCFBF1">■</text><text x="232" y="218" font-size="9" fill="#94A3B8">R.Index</text>
+          <text x="278" y="218" font-size="9" fill="#DBEAFE">■</text><text x="290" y="218" font-size="9" fill="#94A3B8">Thumbs</text>
+          <text x="340" y="218" font-size="9" fill="#FFD234">▬</text><text x="352" y="218" font-size="9" fill="#94A3B8">Home Row bumps (F &amp; J)</text>
+        </svg>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">🔵</span>
+        <div>
+          <h4>Feel the bumps on F and J!</h4>
+          <p>Look at a real keyboard and feel with your index fingers — you'll find a small raised bump on <strong>F</strong> (left index) and <strong>J</strong> (right index). These are your homing guides. Without looking, place your fingers on these bumps and all your other fingers will be in the right position automatically!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Correct Technique -->
+    <div class="card red" style="border-color:#F472B6;">
+      <h3><span class="icon">✅</span> The 5 Golden Rules of Touch Typing</h3>
+      <ol class="steps">
+        <li><strong>Home Row First:</strong> Always return your fingers to ASDF (left) and JKL; (right) after pressing any key. Think of Home Row as your "base camp" — fingers always come back!</li>
+        <li><strong>Never Look Down:</strong> Cover the keyboard with a cloth if you have to! Looking up at the screen forces your brain to memorize key positions. It's uncomfortable at first — that's normal!</li>
+        <li><strong>Use the Correct Finger:</strong> Each key has an assigned finger (see the colour map above). Using the wrong finger is a bad habit. Correct habits now = fast typing later!</li>
+        <li><strong>Light Touch, Low Force:</strong> Don't slam the keys! Tap them lightly. This keeps your fingers relaxed and reduces mistakes and fatigue.</li>
+        <li><strong>Accuracy Before Speed:</strong> It's better to type slowly and correctly than fast and full of mistakes. Speed comes automatically as accuracy improves!</li>
+      </ol>
+
+      <div class="did-you-know">
+        <span class="dyk-icon">🎹</span>
+        <div>
+          <h4>Typing is Like Playing Piano!</h4>
+          <p>A pianist doesn't look at the keys while playing — their fingers know exactly where to go from memory. Touch typing works the same way. At first it feels impossible. After a few weeks of practice, it feels completely natural. <strong>Commit to 10 minutes of practice every day!</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ INTERACTIVE TYPING LAB ══════ -->
+  <div class="divider"></div>
+  <section class="chapter" id="ch6-lab">
+    <div class="chapter-header">
+      <div class="chapter-icon" style="background:#FDE68A;">🧪</div>
+      <div>
+        <div class="chapter-sub">Interactive Lab</div>
+        <h2 class="chapter-title">Typing Practice Lab</h2>
+      </div>
+    </div>
+
+    <div class="card yellow">
+      <h3><span class="icon">⌨️</span> Practice Your 10-Finger Typing Here!</h3>
+      <p>Choose a difficulty level, then type the text shown. The on-screen keyboard will highlight which key to press. Keep your eyes on the screen — not the keyboard!</p>
+
+      <div class="lab-box" id="typingLab">
+        <div class="level-pills">
+          <div class="level-pill active" onclick="setLevel(0)" id="lp0">🌱 Beginner</div>
+          <div class="level-pill" onclick="setLevel(1)" id="lp1">⚡ Home Row</div>
+          <div class="level-pill" onclick="setLevel(2)" id="lp2">🚀 Words</div>
+          <div class="level-pill" onclick="setLevel(3)" id="lp3">🏆 Sentences</div>
+        </div>
+
+        <div class="lab-prompt" id="labPrompt"></div>
+
+        <div id="labKbWrap" style="margin:12px 0;">
+          <!-- JS will render keyboard here -->
+        </div>
+
+        <input class="lab-input" id="labInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Start typing here… 👇" />
+
+        <div class="lab-stats">
+          <div class="lab-stat"><div class="val" id="statWPM">0</div><div class="lbl">WPM</div></div>
+          <div class="lab-stat"><div class="val" id="statAcc">100%</div><div class="lbl">Accuracy</div></div>
+          <div class="lab-stat"><div class="val" id="statChars">0</div><div class="lbl">Chars</div></div>
+          <div class="lab-stat"><div class="val" id="statTime">0s</div><div class="lbl">Time</div></div>
+        </div>
+        <div style="margin-top:8px;">
+          <button class="lab-btn" onclick="resetLab()">🔄 New Text</button>
+          <button class="lab-btn secondary" onclick="toggleHint()">💡 Toggle Finger Hint</button>
+        </div>
+      </div>
+
+      <ul class="tip-list">
+        <li><span class="bullet bullet-yellow">🌱</span><span><strong>Beginner:</strong> Just the Home Row keys — ASDF and JKL; — the easiest starting point.</span></li>
+        <li><span class="bullet bullet-yellow">⚡</span><span><strong>Home Row:</strong> A mix of Home Row keys with short words. Good for building muscle memory.</span></li>
+        <li><span class="bullet bullet-yellow">🚀</span><span><strong>Words:</strong> Common simple English words. Challenge yourself to type without looking!</span></li>
+        <li><span class="bullet bullet-yellow">🏆</span><span><strong>Sentences:</strong> Full sentences. Check your WPM score and try to beat it each round!</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════ FOLDER & ZIP PRACTICE LAB ══════ -->
+  <div class="divider"></div>
+  <section class="chapter" id="ch6-folder">
+    <div class="chapter-header">
+      <div class="chapter-icon" style="background:#D1FAE5;">📂</div>
+      <div>
+        <div class="chapter-sub">Interactive Lab</div>
+        <h2 class="chapter-title">Folder &amp; ZIP Practice Lab</h2>
+      </div>
+    </div>
+
+    <div class="card green">
+      <h3><span class="icon">📂</span> Practice Creating Folders</h3>
+      <p>Use the simulator below to practice creating, renaming, and deleting folders — just like on a real Windows computer!</p>
+
+      <div class="folder-lab">
+        <h4>🖥️ File Explorer Simulator — My Documents</h4>
+        <div class="sim-step-row">
+          <input class="sim-input" type="text" id="folderNameInput" placeholder="Folder name…" maxlength="30" />
+          <button class="sim-btn" onclick="simCreateFolder()">📁 Create Folder</button>
+          <button class="sim-btn" onclick="simRenameFolder()" style="background:#047857;">✏️ Rename Selected</button>
+          <button class="sim-btn" onclick="simDeleteFolder()" style="background:#DC2626;">🗑️ Delete Selected</button>
+        </div>
+        <div class="sim-area" id="folderArea" onclick="simDeselect()">
+          <em style="color:#94A3B8;font-size:.85rem;">📂 No folders yet — create one above!</em>
+        </div>
+        <div class="sim-log" id="folderLog">$ Ready. Type a folder name and click "Create Folder" to start!</div>
+      </div>
+    </div>
+
+    <div class="card green">
+      <h3><span class="icon">🗜️</span> Practice Creating ZIP Files</h3>
+      <p>Select files below by clicking them, then compress them into a ZIP file. Watch the file size shrink!</p>
+
+      <div class="folder-lab">
+        <h4>🖥️ File Explorer Simulator — My Files</h4>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px;">Click files to select them (multiple allowed), then click "Compress to ZIP".</p>
+        <div class="sim-area" id="zipArea" style="min-height:80px;"></div>
+        <div class="sim-step-row" style="margin-top:10px;">
+          <button class="sim-btn" onclick="simZip()">🗜️ Compress to ZIP</button>
+          <button class="sim-btn" onclick="simExtract()" style="background:#047857;">📦 Extract ZIP</button>
+          <button class="sim-btn" onclick="simResetZip()" style="background:#6B7A99;">🔄 Reset</button>
+        </div>
+        <div class="sim-log" id="zipLog">$ Click files to select, then compress!</div>
+      </div>
+
+      <div class="callout good">
+        <span class="callout-icon">✅</span>
+        <div>
+          <h4>Remember the real steps on Windows!</h4>
+          <p>Select files → Right-click → <strong>Send to → Compressed (zipped) folder</strong>. The ZIP file appears in the same location. To extract: right-click ZIP → <strong>Extract All…</strong> → choose destination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ QUIZ SECTION ══════ -->
+  <div class="divider"></div>
+  <section id="quiz-section">
+    <div class="quiz-section-box">
+      <h2>🎯 Quiz Time! Test Your Knowledge</h2>
+      <p>You've finished all the chapters! Now prove what you've learned by joining the Quizizz challenge. Click below to join the quiz with your class code!</p>
+      <a href="https://wayground.com/join?gc=50233513" target="_blank" class="quizizz-btn">🚀 Join the Quiz on Quizizz!</a>
+      <div class="quiz-badge-row">
+        <span class="quiz-badge">📋 Code: 50233513</span>
+        <span class="quiz-badge">⏱️ Timed Challenge</span>
+        <span class="quiz-badge">🏆 See your rank!</span>
+        <span class="quiz-badge">🌐 Opens in new tab</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p>📚 ICT E-Module · Matriculation Level 7 · SMP ABBS Surakarta</p>
+  <p style="margin-top:6px;">Academic Year 2026/2027 &nbsp;|&nbsp; Teacher <span>: </span> Mr. Ifan Destya Adi Tama, S.Pd., Gr.</p>
+</footer>
+
+<script>
+/* ════════ TYPING LAB ════════ */
+const LEVELS = [
+  // 0 Beginner – home row only
+  ["asdf jkl; asdf jkl;","fj fj fj dk dk sl sl","asdfjkl; jkl;asdf","fjfj dkdk slsl aaa","fff jjj aaa ;;; sss lll ddd kkk"],
+  // 1 Home Row words
+  ["fall glad flask shall","half dash flask lads","flag flash ask all","add fall jail flash","shall half glad ask all"],
+  // 2 Words
+  ["cat dog run fun cup","bird fish hand open","blue tree jump star","good food play rest","hard work kind look fast"],
+  // 3 Sentences
+  ["The cat sat on the mat.","I love to learn and grow.","Type fast but type correctly!","Practice makes a good typist.","Good morning! How are you today?"]
+];
+
+let curLevel = 0, curText = "", typed = "", startTime = null, timerInterval = null, showHint = true;
+
+// Finger assignments for every key (qwerty)
+const fingerMap = {
+  '`':'pinky-l','1':'pinky-l','2':'ring-l','3':'mid-l','4':'idx-l','5':'idx-l2',
+  '6':'idx-r','7':'idx-r2','8':'mid-r','9':'ring-r','0':'pinky-r','-':'pinky-r','=':'pinky-r',
+  'q':'pinky-l','w':'ring-l','e':'mid-l','r':'idx-l','t':'idx-l2',
+  'y':'idx-r','u':'idx-r2','i':'mid-r','o':'ring-r','p':'pinky-r',
+  'a':'pinky-l','s':'ring-l','d':'mid-l','f':'idx-l','g':'idx-l2',
+  'h':'idx-r','j':'idx-r2','k':'mid-r','l':'ring-r',';':'pinky-r',"'":'pinky-r',
+  'z':'pinky-l','x':'ring-l','c':'mid-l','v':'idx-l','b':'idx-l2',
+  'n':'idx-r','m':'idx-r2',',':'mid-r','.':'ring-r','/':'pinky-r',
+  ' ':'thumb','shift':'pinky-r','enter':'pinky-r'
+};
+
+const ROWS = [
+  ['`','1','2','3','4','5','6','7','8','9','0','-','=','⌫'],
+  ['Tab','q','w','e','r','t','y','u','i','o','p','[',']','\\'],
+  ['Caps','a','s','d','f','g','h','j','k','l',';',"'",'Enter'],
+  ['Shift','z','x','c','v','b','n','m',',','.','/','⇑'],
+  ['Ctrl','Win','Alt',' ','Alt','Fn','Ctrl']
+];
+const WIDE = {'⌫':'wide-2','Tab':'wide-2','Caps':'wide-2','Enter':'wide-3','Shift':'wide-3','⇑':'wide-3','Ctrl':'wide-1','Win':'wide-1','Alt':'wide-1','Fn':'wide-1'};
+
+function buildKeyboard() {
+  const wrap = document.getElementById('labKbWrap');
+  wrap.innerHTML = '';
+  ROWS.forEach((row, ri) => {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'kb-row-keys';
+    row.forEach(k => {
+      const el = document.createElement('div');
+      const kLow = k.toLowerCase();
+      const fc = fingerMap[kLow] || '';
+      el.className = 'k ' + (WIDE[k] || '') + (k === ' ' ? ' space-bar' : '') + (fc ? ' ' + fc : '');
+      if (k === 'f' || k === 'j') el.classList.add('home-mark');
+      el.textContent = k === ' ' ? 'SPACE' : k;
+      el.id = 'key_' + (k === ' ' ? 'space' : k.replace(/[^a-z0-9]/gi, c => c.charCodeAt(0)));
+      rowDiv.appendChild(el);
+    });
+    wrap.appendChild(rowDiv);
+  });
+}
+
+function highlightKey(ch, cls) {
+  if (!showHint) return;
+  const kLow = ch === ' ' ? 'space' : ch.toLowerCase();
+  const el = document.getElementById('key_' + (kLow === 'space' ? 'space' : kLow.replace(/[^a-z0-9]/gi, c => c.charCodeAt(0))));
+  if (el) { el.classList.add(cls); setTimeout(() => el.classList.remove(cls), 300); }
+}
+
+function renderPrompt() {
+  const el = document.getElementById('labPrompt');
+  let html = '';
+  for (let i = 0; i < curText.length; i++) {
+    const c = curText[i] === ' ' ? '&nbsp;' : curText[i];
+    if (i < typed.length) {
+      html += typed[i] === curText[i]
+        ? `<span class="done-char">${c}</span>`
+        : `<span class="wrong-char">${c}</span>`;
+    } else if (i === typed.length) {
+      html += `<span class="cur-char">${c}</span>`;
+    } else {
+      html += `<span class="wait-char">${c}</span>`;
+    }
+  }
+  el.innerHTML = html;
+  // highlight next key
+  if (showHint && typed.length < curText.length) {
+    const next = curText[typed.length];
+    const kLow = next === ' ' ? 'space' : next.toLowerCase();
+    document.querySelectorAll('.k.lit').forEach(e => e.classList.remove('lit'));
+    const el2 = document.getElementById('key_' + (kLow === 'space' ? 'space' : kLow.replace(/[^a-z0-9]/gi, c => c.charCodeAt(0))));
+    if (el2) el2.classList.add('lit');
+  } else {
+    document.querySelectorAll('.k.lit').forEach(e => e.classList.remove('lit'));
+  }
+}
+
+function updateStats() {
+  const elapsed = startTime ? (Date.now() - startTime) / 60000 : 0;
+  const wpm = elapsed > 0 ? Math.round((typed.length / 5) / elapsed) : 0;
+  let correct = 0;
+  for (let i = 0; i < typed.length; i++) if (typed[i] === curText[i]) correct++;
+  const acc = typed.length > 0 ? Math.round((correct / typed.length) * 100) : 100;
+  document.getElementById('statWPM').textContent = wpm;
+  document.getElementById('statAcc').textContent = acc + '%';
+  document.getElementById('statChars').textContent = typed.length;
+  document.getElementById('statTime').textContent = Math.round((Date.now() - (startTime || Date.now())) / 1000) + 's';
+}
+
+function setLevel(l) {
+  curLevel = l;
+  ['lp0','lp1','lp2','lp3'].forEach((id,i) => {
+    document.getElementById(id).classList.toggle('active', i === l);
+  });
+  resetLab();
+}
+
+function resetLab() {
+  const pool = LEVELS[curLevel];
+  curText = pool[Math.floor(Math.random() * pool.length)];
+  typed = '';
+  startTime = null;
+  clearInterval(timerInterval);
+  document.getElementById('labInput').value = '';
+  document.getElementById('labInput').focus();
+  renderPrompt();
+  updateStats();
+  document.querySelectorAll('.k.lit').forEach(e => e.classList.remove('lit'));
+}
+
+function toggleHint() { showHint = !showHint; renderPrompt(); }
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildKeyboard();
+  resetLab();
+  const inp = document.getElementById('labInput');
+  inp.addEventListener('input', function() {
+    if (!startTime && this.value.length > 0) {
+      startTime = Date.now();
+      timerInterval = setInterval(updateStats, 500);
+    }
+    const newTyped = this.value;
+    const lastChar = newTyped[newTyped.length - 1] || '';
+    if (newTyped.length <= curText.length) {
+      const correct = newTyped[newTyped.length - 1] === curText[newTyped.length - 1];
+      highlightKey(lastChar, correct ? 'correct-key' : 'wrong-key');
+      typed = newTyped;
+    } else {
+      this.value = typed;
+    }
+    renderPrompt();
+    updateStats();
+    if (typed === curText) {
+      clearInterval(timerInterval);
+      updateStats();
+      setTimeout(() => { alert('🎉 Great job! You finished! Press OK to try again.'); resetLab(); }, 200);
+    }
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') e.preventDefault();
+  });
+});
+
+/* ════════ FOLDER LAB ════════ */
+let folders = [], selectedFolder = null;
+
+function log(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = '$ ' + msg;
+}
+
+function renderFolders() {
+  const area = document.getElementById('folderArea');
+  if (folders.length === 0) {
+    area.innerHTML = '<em style="color:#94A3B8;font-size:.85rem;">📂 No folders yet — create one above!</em>';
+    return;
+  }
+  area.innerHTML = folders.map((f,i) =>
+    `<div class="sim-item ${selectedFolder===i?'selected':''}" onclick="simSelect(${i},event)">📁 ${f}</div>`
+  ).join('');
+}
+
+function simDeselect() { selectedFolder = null; renderFolders(); }
+
+function simSelect(i, e) {
+  e.stopPropagation();
+  selectedFolder = (selectedFolder === i) ? null : i;
+  renderFolders();
+  if (selectedFolder !== null) log('folderLog', `Selected: "${folders[selectedFolder]}"`);
+}
+
+function simCreateFolder() {
+  const inp = document.getElementById('folderNameInput');
+  const name = inp.value.trim();
+  if (!name) { log('folderLog', 'ERROR: Please type a folder name first!'); return; }
+  if (folders.includes(name)) { log('folderLog', `ERROR: Folder "${name}" already exists!`); return; }
+  folders.push(name);
+  log('folderLog', `✅ Created folder: "${name}" — Right-click method: Right-click empty space → New → Folder`);
+  inp.value = '';
+  selectedFolder = null;
+  renderFolders();
+}
+
+function simRenameFolder() {
+  if (selectedFolder === null) { log('folderLog', 'ERROR: Click a folder to select it first!'); return; }
+  const inp = document.getElementById('folderNameInput');
+  const newName = inp.value.trim();
+  if (!newName) { log('folderLog', 'ERROR: Type the new name in the input box first!'); return; }
+  const old = folders[selectedFolder];
+  folders[selectedFolder] = newName;
+  log('folderLog', `✏️ Renamed: "${old}" → "${newName}" — Real step: Right-click → Rename`);
+  inp.value = '';
+  selectedFolder = null;
+  renderFolders();
+}
+
+function simDeleteFolder() {
+  if (selectedFolder === null) { log('folderLog', 'ERROR: Click a folder to select it first!'); return; }
+  const name = folders[selectedFolder];
+  folders.splice(selectedFolder, 1);
+  selectedFolder = null;
+  log('folderLog', `🗑️ Deleted: "${name}" — Moved to Recycle Bin. Real step: Right-click → Delete`);
+  renderFolders();
+}
+
+/* ════════ ZIP LAB ════════ */
+const ZIP_FILES = [
+  {name:'homework.docx', size:'420 KB', icon:'📄'},
+  {name:'photo1.jpg', size:'1.8 MB', icon:'🖼️'},
+  {name:'notes.txt', size:'28 KB', icon:'📝'},
+  {name:'project.pptx', size:'3.2 MB', icon:'📊'},
+  {name:'data.xlsx', size:'860 KB', icon:'📋'},
+  {name:'music.mp3', size:'4.1 MB', icon:'🎵'},
+];
+let selectedZipItems = new Set(), zips = [], zipState = 'files';
+
+function renderZipArea() {
+  const area = document.getElementById('zipArea');
+  if (zipState === 'files') {
+    area.innerHTML = ZIP_FILES.map((f,i) =>
+      `<div class="sim-item ${selectedZipItems.has(i)?'selected':''}" onclick="toggleZipItem(${i})">${f.icon} ${f.name}<br><small style="color:#6B7A99;font-weight:400;">${f.size}</small></div>`
+    ).join('') + zips.map((z,i) =>
+      `<div class="sim-item zip-item" onclick="selectZipFile(${i})">🗜️ ${z.name}<br><small style="color:#047857;font-weight:400;">${z.compressed}</small></div>`
+    ).join('');
+  }
+}
+
+function toggleZipItem(i) {
+  if (selectedZipItems.has(i)) selectedZipItems.delete(i);
+  else selectedZipItems.add(i);
+  renderZipArea();
+  const sel = [...selectedZipItems].map(i => ZIP_FILES[i].name).join(', ');
+  log('zipLog', `Selected: ${sel || 'nothing'}`);
+}
+
+function selectZipFile(i) {
+  log('zipLog', `📦 "${zips[i].name}" selected — right-click → Extract All to unzip`);
+}
+
+function simZip() {
+  if (selectedZipItems.size === 0) { log('zipLog', 'ERROR: Select at least one file first!'); return; }
+  const selected = [...selectedZipItems].map(i => ZIP_FILES[i]);
+  const totalKB = selected.reduce((s,f) => s + parseFloat(f.size), 0);
+  const compKB  = Math.round(totalKB * 0.62 * 10) / 10;
+  const saving  = Math.round((1 - compKB / totalKB) * 100);
+  const zipName = 'archive_' + Date.now().toString().slice(-4) + '.zip';
+  zips.push({ name: zipName, original: totalKB.toFixed(1) + ' MB', compressed: compKB.toFixed(1) + ' MB', files: selected });
+  log('zipLog', `🗜️ Created: "${zipName}"\n   Files: ${selected.map(f=>f.name).join(', ')}\n   Original: ${totalKB.toFixed(1)} MB → Compressed: ${compKB.toFixed(1)} MB (saved ${saving}%!)`);
+  selectedZipItems.clear();
+  renderZipArea();
+}
+
+function simExtract() {
+  if (zips.length === 0) { log('zipLog', 'ERROR: No ZIP files exist yet. Compress files first!'); return; }
+  const z = zips[zips.length - 1];
+  log('zipLog', `📦 Extracting "${z.name}"...\n   Extracted files: ${z.files.map(f=>f.name).join(', ')}\n   ✅ Done! Real step: Right-click ZIP → Extract All…`);
+}
+
+function simResetZip() {
+  selectedZipItems.clear(); zips = []; zipState = 'files';
+  log('zipLog', '$ Reset! Click files to select, then compress.');
+  renderZipArea();
+}
+
+document.addEventListener('DOMContentLoaded', () => { renderFolders(); renderZipArea(); });
+</script>
+</body>
+</html>
